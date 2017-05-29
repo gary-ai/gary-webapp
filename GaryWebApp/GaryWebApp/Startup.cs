@@ -1,4 +1,5 @@
 ﻿using GaryWebApp.Business.Services;
+using GaryWebApp.Data.Models;
 using GaryWebApp.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,16 @@ namespace GaryWebApp
         {
             // Add framework services.
             services.AddMvc();
-			services.AddTransient<IRegisterService, RegisterService>();
+
+			// MongoDB connectionString
+			services.Configure<Settings>(options =>
+	        {
+		        options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+		        options.Database = Configuration.GetSection("MongoConnection:Database").Value;
+	        });
+
+            // Register services and repositories
+			services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, UserRepository>();
         }
 

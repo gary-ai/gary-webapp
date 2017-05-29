@@ -1,0 +1,16 @@
+﻿@model GaryWebApp.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Se connecter";
+}
+
+    @using (Html.BeginForm())
+    {
+        <br><p>
+            Nom d'uitlisateur : @Html.TextBoxFor(x => x.Username)
+        </p>
+        <p>
+            Mot de passe : @Html.PasswordFor(x => x.Password)
+        </p>
+        <input type="submit" value="Connexion" />
+    }

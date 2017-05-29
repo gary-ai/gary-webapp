@@ -1,0 +1,20 @@
+﻿@model GaryWebApp.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Créer un compte";
+}
+
+    @using (Html.BeginForm())
+    {
+        <br><p>
+            Nom d'uitlisateur : @Html.TextBoxFor(x => x.Username)
+        </p>
+        <p>
+            Mot de passe : @Html.PasswordFor(x => x.Password)
+        </p>
+        
+        <p>
+           Confirmation mot de passe : @Html.PasswordFor(x=>x.ConfirmPassword)
+        </p>       
+        <input type="submit" value="Créer un compte" />
+    }
